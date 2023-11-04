@@ -2,9 +2,7 @@
 #include "DataStructures/LinkedList.h"
 
 
-
-int main()
-{
+void testLinkedList() {
     // Test cases for LinkedList class
 
     LinkedList list;
@@ -65,6 +63,11 @@ int main()
     catch (const std::runtime_error& e) {
         std::cerr << e.what() << std::endl;
     }
+}
+
+int main()
+{
+    testLinkedList();
 
     return 0;
 }
