@@ -5,12 +5,17 @@
 *.user
 *.sln.docstates
 
+# Visual Studio project files
+DesignPatterns/DesignPatterns.vcxproj
+DesignPatterns/DesignPatterns.vcxproj.filters
+DesignPatterns/x64/
+x64/
+
 # User-specific files
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
-
 
 # CLion files
 .idea/
