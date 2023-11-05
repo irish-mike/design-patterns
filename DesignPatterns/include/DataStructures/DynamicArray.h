@@ -15,7 +15,11 @@ public:
     void removeAt(int index);
     int indexOf(int val);
 
-    void print();
+    //Getters & Setters
+    int getCount() { return count; };
+
+    //Operator Overloads
+    int& operator[](int index);
 
 private:
     int* array;

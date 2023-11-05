@@ -3,12 +3,17 @@
 
 
 void DynamicArray::insert(int value) {
-    if(count > size) reSize();
+    if(count >= size) reSize();
 
-    this->array[count++] = value;
+    array[count++] = value;
 }
 
 void DynamicArray::removeAt(int index) {
+    
+    if (count <= 0) {
+        throw std::out_of_range("Cannot remove from an empty array");
+    };
+    
     if(index < 0 || index >= count){
         throw std::invalid_argument("Index out of bounds");
     };
@@ -35,7 +40,6 @@ void DynamicArray::reSize() {
     size *= 2;
     int* newArray = new int[size];
 
-    // Copy elements from the old array to the new array
     for (int i=0; i< count; i++){
         newArray[i] = array[i];
     }
@@ -44,11 +48,9 @@ void DynamicArray::reSize() {
     array = newArray; // Update the array pointer to the new array
 }
 
-void DynamicArray::print() {
-
-    for (int i=0; i< count; i++){
-        std::cout << array[i] << ", ";
+int& DynamicArray::operator[](int index) {
+    if (index < 0 || index >= count) {
+        throw std::out_of_range("Index out of bounds");
     }
-
-    std::cout << std::endl;
+    return array[index];
 }
