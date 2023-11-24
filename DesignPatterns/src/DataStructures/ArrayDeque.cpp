@@ -1,9 +1,9 @@
-#include "ArrayDeque.h"
+#include "Datastructures/ArrayDeque.h"
 #include <stdexcept>
 
 ArrayDeque::ArrayDeque(int size): size(size) {
-    if (size < 0) {
-        throw std::invalid_argument("Size must be non-negative");
+    if (size <= 0) {
+        throw std::invalid_argument("Size must be positive");
     }
     queue = new int[size];
 }
@@ -13,33 +13,27 @@ void ArrayDeque::enqueue(int val) {
         throw std::overflow_error("Queue is full");
     }
 
-    queue[count] = val;
+    queue[getBack()] = val;
     count++;
 }
 
 int ArrayDeque::dequeue() {
     if(isEmpty()){
-        throw std::underflow_error("Que is empty");
+        throw std::underflow_error("Queue is empty");
     }
 
-    int temp = queue[front];
-    queue[front] = 0;
+    int val = queue[getFront()];
 
+    queue[getFront()] = 0;
     count--;
     front++;
 
-    if(isEmpty()){
-        front = 0;
-    }else{
-        front %= count;
-    }
-
-    return temp;
+    return val;
 }
 
 int ArrayDeque::peek() const{
     if(isEmpty()){
-        throw std::underflow_error("Que is empty");
+        throw std::underflow_error("Queue is empty");
     }
 
     return queue[front];
@@ -48,6 +42,16 @@ int ArrayDeque::peek() const{
 
 bool ArrayDeque::isFull() const{
     return (count == size);
+}
+
+int ArrayDeque::getFront() const
+{
+    return front % size;
+}
+
+int ArrayDeque::getBack() const
+{
+    return (front + count) % size;
 }
 
 bool ArrayDeque::isEmpty() const{

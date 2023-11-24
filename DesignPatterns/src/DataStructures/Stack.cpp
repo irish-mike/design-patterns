@@ -1,8 +1,5 @@
-//
-// Created by Mike Grinnell on 08/11/2023.
-//
 #include <iostream>
-#include "Stack.h"
+#include "Datastructures/Stack.h"
 
 Stack::Stack(int size) : size(size), count(0) {
     if (size < 0) {

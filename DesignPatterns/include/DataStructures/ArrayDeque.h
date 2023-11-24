@@ -1,7 +1,3 @@
-//
-// Created by Mike Grinnell on 08/11/2023.
-//
-
 #ifndef DATASTRUCTURES_ARRAYDEQUE_H
 #define DATASTRUCTURES_ARRAYDEQUE_H
 
@@ -9,6 +5,7 @@
 class ArrayDeque {
 public:
     explicit ArrayDeque(int size = 10);
+    ~ArrayDeque() {delete[] queue;}
 
     void enqueue(int val);
     int dequeue();
@@ -17,6 +14,9 @@ public:
 
     bool isEmpty() const;
     bool isFull() const;
+
+    int getFront() const;
+    int getBack() const;
 
 private:
     int* queue;
